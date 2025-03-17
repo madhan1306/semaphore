@@ -1,16 +1,8 @@
 ---
-- name: Install and Start Apache (httpd)
-  hosts: webservers
-  become: yes  # Run as sudo/root
-
+- name: Test Ansible connectivity
+  hosts: all
+  become: yes
   tasks:
-    - name: Install httpd (Apache)
-      package:
-        name: httpd
-        state: present
-
-    - name: Start and enable httpd service
-      service:
-        name: httpd
-        state: started
-        enabled: yes
+    - name: Ping all servers
+      ansible.builtin.ping:
+      
