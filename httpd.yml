@@ -1,0 +1,16 @@
+---
+- name: Install and Start Apache (httpd)
+  hosts: webservers
+  become: yes  # Run as sudo/root
+
+  tasks:
+    - name: Install httpd (Apache)
+      package:
+        name: httpd
+        state: present
+
+    - name: Start and enable httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
